@@ -1,0 +1,77 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    color: #333;
+  }
+  
+  /* Navbar */
+  header {
+    background: linear-gradient(90deg, #4facfe, #00f2fe);
+    color: white;
+    padding: 15px;
+    text-align: center;
+  }
+  header h1 {
+    margin: 0;
+  }
+  nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  nav a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Search + Filter */
+  .search-filter {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px;
+  }
+  .search-filter input, .search-filter select {
+    padding: 8px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  /* Subject Cards */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+  .card {
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Card Colors */
+  .sorting { background: #4facfe; }
+  .aptitude { background: #43e97b; }
+  .mysql { background: #ff9966; }
+  .ds { background: #f85032; }
+  
+  /* Footer */
+  footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 30px;
+  }
+  
