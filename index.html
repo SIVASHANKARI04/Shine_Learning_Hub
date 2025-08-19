@@ -1,1 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shine Learning Hub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <h1>🌟 Shine Learning Hub</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Subjects</a>
+      <a href="#">About</a>
+      <a href="#">Upload</a>
+    </nav>
+  </header>
+
+  <!-- Search + Filter -->
+  <section class="search-filter">
+    <input type="text" placeholder="🔍 Search notes...">
+    <select>
+      <option>All Subjects</option>
+      <option>Sorting Techniques</option>
+      <option>Aptitude</option>
+      <option>MySQL</option>
+      <option>Data Structures</option>
+    </select>
+  </section>
+
+  <!-- Subjects Grid -->
+  <section class="grid">
+    <a href="sorting.html" class="card sorting">📘 Sorting Techniques</a>
+    <a href="aptitude.html" class="card aptitude">📗 Aptitude</a>
+    <a href="mysql.html" class="card mysql">📙 MySQL</a>
+    <a href="ds.html" class="card ds">📕 Data Structures</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>WELCOME TO OUR SHINE LEARNING HUB PROJECT💡</p>
+  </footer>
+
+  <script>
+    const searchInput = document.querySelector("input");
+    const filterSelect = document.querySelector("select");
+    const cards = document.querySelectorAll(".card");
+
+    function filterNotes() {
+      const searchText = searchInput.value.toLowerCase();
+      const filterValue = filterSelect.value.toLowerCase();
+
+      cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        const matchesSearch = text.includes(searchText);
+        const matchesFilter = filterValue === "all subjects" || text.includes(filterValue);
+
+        if (matchesSearch && matchesFilter) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    }
+
+    searchInput.addEventListener("input", filterNotes);
+    filterSelect.addEventListener("change", filterNotes);
+  </script>
+
+</body>
+</html>
 
