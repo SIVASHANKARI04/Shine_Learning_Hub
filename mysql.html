@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sorting Techniques</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+    embed {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .topbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #222;
+      color: #fff;
+      padding: 10px;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      z-index: 1000;
+    }
+    .topbar a {
+      color: #00ffcc;
+      text-decoration: none;
+      margin-left: 20px;
+    }
+    .pdf-container {
+      position: absolute;
+      top: 40px; /* height of topbar */
+      left: 0;
+      width: 100%;
+      height: calc(100% - 40px);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top bar with Back button -->
+  <div class="topbar">
+    📘 Sorting Techniques
+    <a href="index.html">⬅ Back to Home</a>
+  </div>
+
+  <!-- Fullscreen PDF -->
+  <div class="pdf-container">
+    <embed src="notes/mysql.pdf" type="application/pdf">
+  </div>
+
+</body>
+</html>
