@@ -744,7 +744,7 @@ for _ in range(3, n+1):
 <section id="palindrome" class="card">
   <h2>9) Palindrome of a Text</h2>
   <div class="grid-2">
-    <!-- Left Column: Algorithm + Flowchart -->
+    <!-- Left Column: Algorithm + Flowchart + Java -->
     <div>
       <h3>Algorithm</h3>
       <pre>
@@ -765,6 +765,31 @@ END
       <div class="flow">
         Start → Read text → Reverse text → Compare original and reversed → Match? → Yes → Print "Palindrome" : No → Print "Not a Palindrome" → End
       </div>
+
+      <h3>Java Program</h3>
+      <pre><code>
+import java.util.Scanner;
+
+public class PalindromeCheck {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter text: ");
+        String str = sc.nextLine();
+        String rev = "";
+        
+        for (int i = str.length() - 1; i >= 0; i--) {
+            rev += str.charAt(i);
+        }
+        
+        if (str.equals(rev)) {
+            System.out.println("Palindrome");
+        } else {
+            System.out.println("Not a Palindrome");
+        }
+        sc.close();
+    }
+}
+      </code></pre>
     </div>
 
     <!-- Right Column: Pseudocode + C + Python -->
@@ -783,7 +808,8 @@ END
       </pre>
 
       <h3>C Program</h3>
-      <pre><code>#include &lt;stdio.h&gt;
+      <pre><code>
+#include &lt;stdio.h&gt;
 #include &lt;string.h&gt;
 int main(){
     char s[200], r[200];
@@ -793,31 +819,35 @@ int main(){
     r[n]='\0';
     puts(strcmp(s,r)==0 ? "Palindrome" : "Not a Palindrome");
     return 0;
-}</code></pre>
+}
+      </code></pre>
 
       <h3>Python Program</h3>
-      <pre><code>text = input("Enter text: ")
+      <pre><code>
+text = input("Enter text: ")
 reversed_text = text[::-1]
 if text == reversed_text:
     print("Palindrome")
 else:
-    print("Not a Palindrome")</code></pre>
+    print("Not a Palindrome")
+      </code></pre>
     </div>
   </div>
 </section>
+
 
 <!-- 10 Prime -->
 <section id="prime" class="card">
   <h2>10) Check Prime Number</h2>
   <div class="grid-2">
-    <!-- Left Column: Algorithm + Flowchart -->
+    <!-- Left Column: Algorithm + Flowchart + Java -->
     <div>
       <h3>Algorithm</h3>
       <pre>
 Start
 Input n
-If n &lt; 2 → Not Prime
-Check divisors from 2 to n/2
+If n < 2 → Not Prime
+Check divisors from 2 to sqrt(n)
 If any divides → Not Prime
 Else → Prime
 End
@@ -825,8 +855,40 @@ End
 
       <h3>Flowchart</h3>
       <div class="flow">
-        Start → Read n → n &lt;= 1? → Yes → Print "Not Prime" → End : No → Initialize flag=0 → Loop i=2 to n-1 → n MOD i = 0? → Yes → flag=1 & Break → No → Next i → flag=0? → Yes → Print "Prime" : No → Print "Not Prime" → End
+        Start → Read n → n <= 1? → Yes → Print "Not Prime" → End : No → Initialize flag=0 → Loop i=2 to √n → n MOD i = 0? → Yes → flag=1 & Break → No → Next i → flag=0? → Yes → Print "Prime" : No → Print "Not Prime" → End
       </div>
+
+      <h3>Java Program</h3>
+      <pre><code>
+import java.util.Scanner;
+
+public class PrimeCheck {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number: ");
+        int n = sc.nextInt();
+        boolean prime = true;
+
+        if (n <= 1) {
+            prime = false;
+        } else {
+            for (int i = 2; i * i <= n; i++) {
+                if (n % i == 0) {
+                    prime = false;
+                    break;
+                }
+            }
+        }
+
+        if (prime) {
+            System.out.println("Prime");
+        } else {
+            System.out.println("Not Prime");
+        }
+        sc.close();
+    }
+}
+      </code></pre>
     </div>
 
     <!-- Right Column: Pseudocode + C + Python -->
@@ -835,11 +897,11 @@ End
       <pre>
 START
 READ n
-IF n &lt;= 1 THEN
+IF n <= 1 THEN
     PRINT "Not Prime"
 ELSE
     SET flag ← 0
-    FOR i ← 2 TO n-1 DO
+    FOR i ← 2 TO √n DO
         IF n MOD i = 0 THEN
             SET flag ← 1
             BREAK
@@ -855,19 +917,22 @@ END
       </pre>
 
       <h3>C Program</h3>
-      <pre><code>#include &lt;stdio.h&gt;
+      <pre><code>
+#include &lt;stdio.h&gt;
 int main(){
     int n; scanf("%d",&n);
-    int prime = n&gt;1;
-    for(int i=2; prime && i*i&lt;=n; i++)
+    int prime = n>1;
+    for(int i=2; prime && i*i<=n; i++)
         if(n%i==0) prime=0;
     puts(prime ? "Prime" : "Not Prime");
     return 0;
-}</code></pre>
+}
+      </code></pre>
 
       <h3>Python Program</h3>
-      <pre><code>n = int(input("Enter number: "))
-if n &lt;= 1:
+      <pre><code>
+n = int(input("Enter number: "))
+if n <= 1:
     print("Not Prime")
 else:
     prime = True
@@ -875,7 +940,8 @@ else:
         if n % i == 0:
             prime = False
             break
-    print("Prime" if prime else "Not Prime")</code></pre>
+    print("Prime" if prime else "Not Prime")
+      </code></pre>
     </div>
   </div>
 </section>
@@ -884,23 +950,54 @@ else:
 <section id="max-array" class="card">
   <h2>11) Find Maximum in an Array</h2>
   <div class="grid-2">
-    <!-- Left Column: Algorithm / Flowchart -->
+    <!-- Left Column: Algorithm + Flowchart + Java -->
     <div>
-      <h3>Pseudocode (Short)</h3>
+      <h3>Algorithm</h3>
       <pre>
 START
 INPUT n and arr[0..n-1]
 max ← arr[0]
 FOR i from 1..n-1:
-  IF arr[i] &gt; max THEN max ← arr[i]
+  IF arr[i] > max THEN max ← arr[i]
 OUTPUT max
 END
       </pre>
 
       <h3>Flowchart</h3>
       <div class="flow">
-        Start → Read n → Read array[0..n-1] → Set max=array[0] → Loop i=1 to n-1 → arr[i] &gt; max? → Yes → max=arr[i] → No → Next i → End of loop → Print "Maximum is max" → End
+        Start → Read n → Read array[0..n-1] → Set max=array[0] → 
+        Loop i=1 to n-1 → arr[i] > max? → Yes → max=arr[i] → 
+        No → Next i → End of loop → Print "Maximum is max" → End
       </div>
+
+      <h3>Java Program</h3>
+      <pre><code>
+import java.util.Scanner;
+
+public class MaxInArray {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter array size: ");
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+
+        System.out.println("Enter elements:");
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        int max = arr[0];
+        for (int i = 1; i < n; i++) {
+            if (arr[i] > max) {
+                max = arr[i];
+            }
+        }
+
+        System.out.println("Maximum element is " + max);
+        sc.close();
+    }
+}
+      </code></pre>
     </div>
 
     <!-- Right Column: Detailed Pseudocode + C + Python -->
@@ -912,7 +1009,7 @@ READ n  // size of array
 READ array[1..n]
 SET max ← array[1]
 FOR i ← 2 TO n DO
-    IF array[i] &gt; max THEN
+    IF array[i] > max THEN
         SET max ← array[i]
     END IF
 END FOR
@@ -921,35 +1018,42 @@ END
       </pre>
 
       <h3>C Program</h3>
-      <pre><code>#include &lt;stdio.h&gt;
+      <pre><code>
+#include &lt;stdio.h&gt;
 int main(){
     int n; scanf("%d",&n);
-    int a[n]; for(int i=0;i&lt;n;i++) scanf("%d",&a[i]);
+    int a[n]; 
+    for(int i=0;i&lt;n;i++) scanf("%d",&a[i]);
     int max=a[0];
-    for(int i=1;i&lt;n;i++) if(a[i]&gt;max) max=a[i];
+    for(int i=1;i&lt;n;i++) 
+        if(a[i]&gt;max) max=a[i];
     printf("Maximum element is %d\n", max);
     return 0;
-}</code></pre>
+}
+      </code></pre>
 
       <h3>Python Program</h3>
-      <pre><code>n = int(input("Enter array size: "))
+      <pre><code>
+n = int(input("Enter array size: "))
 arr = list(map(int, input("Enter elements: ").split()))
 max_val = arr[0]
 for i in arr[1:]:
-    if i &gt; max_val:
+    if i > max_val:
         max_val = i
-print("Maximum element is", max_val)</code></pre>
+print("Maximum element is", max_val)
+      </code></pre>
     </div>
   </div>
 </section>
+
 
 <!-- 12 Reverse string -->
 <section id="reverse-string" class="card">
   <h2>12) Reverse a String</h2>
   <div class="grid-2">
-    <!-- Left Column: Short Pseudocode -->
+    <!-- Left Column: Algorithm + Flowchart + Java -->
     <div>
-      <h3>Pseudocode (Short)</h3>
+      <h3>Algorithm</h3>
       <pre>
 START
 INPUT s
@@ -962,8 +1066,31 @@ END
 
       <h3>Flowchart</h3>
       <div class="flow">
-        Start → Read str → Set reversed="" → i = length(str) downto 1 → reversed = reversed + str[i] → Next i → Print "Reversed string" → End
+        Start → Read str → Set reversed="" → 
+        Loop i = length(str) downto 1 → reversed = reversed + str[i] → 
+        Next i → Print "Reversed string" → End
       </div>
+
+      <h3>Java Program</h3>
+      <pre><code>
+import java.util.Scanner;
+
+public class ReverseString {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String str = sc.nextLine();
+        String rev = "";
+
+        for (int i = str.length() - 1; i >= 0; i--) {
+            rev += str.charAt(i);
+        }
+
+        System.out.println("Reversed string: " + rev);
+        sc.close();
+    }
+}
+      </code></pre>
     </div>
 
     <!-- Right Column: Detailed Pseudocode + C + Python -->
@@ -981,47 +1108,89 @@ END
       </pre>
 
       <h3>C Program</h3>
-      <pre><code>#include &lt;stdio.h&gt;
+      <pre><code>
+#include &lt;stdio.h&gt;
 #include &lt;string.h&gt;
 int main(){
     char s[200], r[200];
     scanf("%199s", s);
-    int n=strlen(s);
-    for(int i=0;i&lt;n;i++) r[i]=s[n-1-i];
-    r[n]='\0';
+    int n = strlen(s);
+    for(int i=0; i&lt;n; i++) 
+        r[i] = s[n-1-i];
+    r[n] = '\0';
     printf("%s\n", r);
     return 0;
-}</code></pre>
+}
+      </code></pre>
 
       <h3>Python Program</h3>
-      <pre><code>str_input = input("Enter a string: ")
+      <pre><code>
+str_input = input("Enter a string: ")
 reversed_str = ""
 for i in range(len(str_input)-1, -1, -1):
     reversed_str += str_input[i]
-print("Reversed string:", reversed_str)</code></pre>
+print("Reversed string:", reversed_str)
+      </code></pre>
     </div>
   </div>
 </section>
 
+
       <!-- 13 Count vowels -->
-      <section id="count-vowels" class="card">
-        <h2>13) Count Vowels in a String</h2>
-        <div class="grid-2">
-          <div>
-            <h3>Pseudocode</h3>
-<pre>START
+<section id="count-vowels" class="card">
+  <h2>13) Count Vowels in a String</h2>
+  <div class="grid-2">
+    <!-- Left Column: Algorithm + Flowchart + Java -->
+    <div>
+      <h3>Algorithm</h3>
+      <pre>
+START
 INPUT s
 count ← 0
 FOR each ch in s:
   IF ch in {a,e,i,o,u,A,E,I,O,U}:
     count ← count + 1
 OUTPUT count
-END</pre>
-          </div>
-          <div>
-<div>
-  <h3>Pseudocode</h3>
-  <pre>
+END
+      </pre>
+
+      <h3>Flowchart</h3>
+      <div class="flow">
+        Start → Read str → Set count=0 → 
+        For each character ch in str → Is ch vowel (a/e/i/o/u)? → 
+        Yes: count=count+1 / No: continue → 
+        Next ch → Print "Number of vowels" → End
+      </div>
+
+      <h3>Java Program</h3>
+      <pre><code>
+import java.util.Scanner;
+
+public class CountVowels {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String str = sc.nextLine();
+        int count = 0;
+
+        for (int i = 0; i < str.length(); i++) {
+            char ch = Character.toLowerCase(str.charAt(i));
+            if (ch=='a' || ch=='e' || ch=='i' || ch=='o' || ch=='u') {
+                count++;
+            }
+        }
+
+        System.out.println("Number of vowels: " + count);
+        sc.close();
+    }
+}
+      </code></pre>
+    </div>
+
+    <!-- Right Column: Detailed Pseudocode + C + Python -->
+    <div>
+      <h3>Pseudocode (Detailed)</h3>
+      <pre>
 START
 READ str
 SET count ← 0
@@ -1032,46 +1201,90 @@ FOR each character ch in str DO
 END FOR
 PRINT "Number of vowels: ", count
 END
-  </pre>
-<h3>Flowchart</h3>
-  <div class="flow">
-    Start → Read str → Set count=0 → For each character ch in str → Is ch a/e/i/o/u? → Yes: count=count+1 / No: continue → Next ch → Print "Number of vowels" → End
-  </div>
-</div>
-            <h3>C Program</h3>
-<pre><code>#include &lt;stdio.h&gt;
+      </pre>
+
+      <h3>C Program</h3>
+      <pre><code>
+#include &lt;stdio.h&gt;
 #include &lt;ctype.h&gt;
 int main(){
     char s[400]; int c=0;
     scanf("%399s", s);
     for(int i=0; s[i]; i++){
-        char ch=tolower(s[i]);
+        char ch = tolower(s[i]);
         if(ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u') c++;
     }
     printf("Number of vowels: %d\n", c);
     return 0;
-}</code></pre>
-          </div>
-        </div>
-      </section>
+}
+      </code></pre>
 
-      <!-- 14 Sum array -->
-      <section id="sum-array" class="card">
-        <h2>14) Sum of Elements in an Array</h2>
-        <div class="grid-2">
-          <div>
-            <h3>Pseudocode</h3>
-<pre>START
+      <h3>Python Program</h3>
+      <pre><code>
+s = input("Enter a string: ")
+count = 0
+for ch in s.lower():
+    if ch in "aeiou":
+        count += 1
+print("Number of vowels:", count)
+      </code></pre>
+    </div>
+  </div>
+</section>
+
+     <!-- 14 Sum array -->
+<section id="sum-array" class="card">
+  <h2>14) Sum of Elements in an Array</h2>
+  <div class="grid-2">
+    <!-- Left Column: Algorithm + Flowchart + Java -->
+    <div>
+      <h3>Algorithm</h3>
+      <pre>
+START
 INPUT n and arr[0..n-1]
 sum ← 0
-FOR i from 0..n-1: sum ← sum + arr[i]
+FOR i from 0 to n-1:
+    sum ← sum + arr[i]
 OUTPUT sum
-END</pre>
-          </div>
-          <div>
-<div>
-  <h3>Pseudocode</h3>
-  <pre>
+END
+      </pre>
+
+      <h3>Flowchart</h3>
+      <div class="flow">
+        Start → Read n → Read array elements → Set sum=0 → 
+        For i=0 to n-1 → sum=sum+array[i] → 
+        Next i → Print "Sum of elements" → End
+      </div>
+
+      <h3>Java Program</h3>
+      <pre><code>
+import java.util.Scanner;
+
+public class SumArray {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of elements: ");
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        int sum = 0;
+
+        System.out.println("Enter elements:");
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+            sum += arr[i];
+        }
+
+        System.out.println("Sum of elements: " + sum);
+        sc.close();
+    }
+}
+      </code></pre>
+    </div>
+
+    <!-- Right Column: Detailed Pseudocode + C + Python -->
+    <div>
+      <h3>Pseudocode (Detailed)</h3>
+      <pre>
 START
 READ n  // size of array
 READ array elements
@@ -1081,24 +1294,34 @@ FOR i ← 0 TO n-1 DO
 END FOR
 PRINT "Sum of elements: ", sum
 END
-  </pre>
-<h3>Flowchart</h3>
-  <div class="flow">
-    Start → Read n → Read array elements → Set sum=0 → For i=0 to n-1 → sum=sum+array[i] → Next i → Print "Sum of elements" → End
-  </div>
-</div>
-            <h3>C Program</h3>
-<pre><code>#include &lt;stdio.h&gt;
+      </pre>
+
+      <h3>C Program</h3>
+      <pre><code>
+#include &lt;stdio.h&gt;
 int main(){
-    int n; scanf("%d",&n);
+    int n;
+    scanf("%d", &n);
     int a[n], sum=0;
-    for(int i=0;i&lt;n;i++){ scanf("%d",&a[i]); sum+=a[i]; }
+    for(int i=0; i<n; i++){
+        scanf("%d", &a[i]);
+        sum += a[i];
+    }
     printf("Sum of elements: %d\n", sum);
     return 0;
-}</code></pre>
-          </div>
-        </div>
-      </section>
+}
+      </code></pre>
+
+      <h3>Python Program</h3>
+      <pre><code>
+n = int(input("Enter number of elements: "))
+arr = list(map(int, input("Enter elements: ").split()))
+print("Sum of elements:", sum(arr))
+      </code></pre>
+    </div>
+  </div>
+</section>
+
 
       <div class="foot">
         Source notes adapted from your uploaded document. :contentReference[oaicite:0]{index=0}
