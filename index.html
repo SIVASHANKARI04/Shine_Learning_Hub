@@ -2,74 +2,114 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shine Learning Hub</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <style>
+body { 
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80') 
+              no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+}
 
-  <!-- Navbar -->
-  <header>
-    <h1>🌟 Shine Learning Hub</h1>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Subjects</a>
-      <a href="#">About</a>
-      <a href="#">Upload</a>
-    </nav>
-  </header>
+/* dark overlay for professional look */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 0;
+}
 
-  <!-- Search + Filter -->
-  <section class="search-filter">
-    <input type="text" placeholder="🔍 Search notes...">
-    <select>
-      <option>All Subjects</option>
-      <option>Sorting Techniques</option>
-      <option>Aptitude</option>
-      <option>MySQL</option>
-      <option>Data Structures</option>
-    </select>
-  </section>
+h1 {
+  font-size: 3.5em;
+  margin-bottom: 20px;
+  z-index: 1;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+}
 
-  <!-- Subjects Grid -->
-  <section class="grid">
-    <a href="sorting.html" class="card sorting">📘 Sorting Techniques</a>
-    <a href="aptitude.html" class="card aptitude">📗 Aptitude</a>
-    <a href="mysql.html" class="card mysql">📙 MySQL</a>
-    <a href="ds.html" class="card ds">📕 Data Structures</a>
-  </section>
+h2 {
+  font-size: 1.5em;
+  margin-bottom: 40px;
+  font-weight: 400;
+  z-index: 1;
+  color: #f1f1f1;
+}
 
-  <!-- Footer -->
-  <footer>
-    <p>WELCOME TO OUR SHINE LEARNING HUB PROJECT💡</p>
-  </footer>
+.buttons {
+  display: flex;
+  gap: 30px;
+  z-index: 1;
+}
 
-  <script>
-    const searchInput = document.querySelector("input");
-    const filterSelect = document.querySelector("select");
-    const cards = document.querySelectorAll(".card");
+.btn {
+  padding: 20px 50px;
+  background: rgba(0, 115, 230, 0.9);
+  color: white;
+  font-size: 1.3em;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: bold;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  transition: all 0.3s ease;
+}
 
-    function filterNotes() {
-      const searchText = searchInput.value.toLowerCase();
-      const filterValue = filterSelect.value.toLowerCase();
+.btn:hover {
+  background: rgba(0, 140, 255, 1);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+}
 
-      cards.forEach(card => {
-        const text = card.textContent.toLowerCase();
-        const matchesSearch = text.includes(searchText);
-        const matchesFilter = filterValue === "all subjects" || text.includes(filterValue);
 
-        if (matchesSearch && matchesFilter) {
-          card.style.display = "block";
-        } else {
-          card.style.display = "none";
-        }
-      });
+    h1 {
+      font-size: 3.5em;
+      margin-bottom: 50px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
     }
 
-    searchInput.addEventListener("input", filterNotes);
-    filterSelect.addEventListener("change", filterNotes);
-  </script>
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      width: 300px;
+    }
 
+    .btn {
+      display: block;
+      padding: 20px;
+      background: rgba(0, 115, 230, 0.85);
+      color: white;
+      font-size: 1.3em;
+      text-decoration: none;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: rgba(0, 115, 230, 1);
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <h1>Shine Learning Hub</h1>
+  <div class="buttons">
+    <a href="sorting.html" class="btn">Technical Module</a>
+    <a href="softskill.html" class="btn">Soft Skill Module</a>
+    <a href="review.html" class="btn">Review Preparation</a>
+  </div>
 </body>
 </html>
-
